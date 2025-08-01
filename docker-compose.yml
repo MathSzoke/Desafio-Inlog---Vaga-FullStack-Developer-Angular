@@ -13,7 +13,7 @@ services:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
-  
+
   pgadmin:
     image: dpage/pgadmin4
     container_name: inlog-pgadmin
@@ -27,7 +27,7 @@ services:
 
   backend:
     build:
-      context: .
+      context: ./back-end/Inlog.Desafio.Backend
       dockerfile: Inlog.Desafio.Backend.WebApi/Dockerfile
     container_name: inlog-backend
     depends_on:
@@ -37,16 +37,16 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__inlogDB=Host=postgres;Port=5432;Database=InlogDb;Username=postgres;Password=postgres
-
+  
   frontend:
     build:
-      context: ../../front-end/inlog-frontend
+      context: ./front-end/inlog-frontend
       dockerfile: Dockerfile
     container_name: inlog-frontend
     ports:
       - "4200:4200"
     volumes:
-      - ../../front-end/inlog-frontend:/app
+      - ./front-end/inlog-frontend:/app
     working_dir: /app
     command: npm run start -- --host 0.0.0.0 --port 4200
     depends_on:
