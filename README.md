@@ -1,3 +1,26 @@
+## Rodando o projeto
+
+Basta executar na **raiz do projeto** (exatamente onde se encontra o arquivo docker-compose.yml), os comandos abaixo:
+
+```shell
+docker-compose build --no-cache
+docker-compose up
+```
+> [!IMPORTANT]
+> É necessário ter o Docker e o Docker Compose instalados.
+> 
+> ## No Linux:
+> ```shell
+> sudo apt-get install docker-compose-plugin
+> ```
+> 
+> ## No Windows:
+> Basta instalar o [Docker desktop](https://www.docker.com/products/docker-desktop/)
+>
+> ou, instalar via Chocolatey:
+> ```shell
+> choco install docker-desktop
+> ```
 
 # Desafio Inlog - Vaga FullStack Developer 🚀
 
