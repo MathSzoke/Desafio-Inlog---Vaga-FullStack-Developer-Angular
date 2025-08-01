@@ -1,6 +1,9 @@
+using SharedKernel;
+
 namespace Inlog.Desafio.Backend.Application.Messaging;
 
-public class ICommand
-{
-    
-}
+public interface ICommand : ICommand<Result> { }
+
+public interface ICommand<TResponse> : IBaseCommand { }
+
+public interface IBaseCommand { }

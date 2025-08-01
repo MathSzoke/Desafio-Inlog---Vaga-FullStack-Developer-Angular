@@ -1,0 +1,9 @@
+<div style="margin: 3em;">
+  <h2 style="text-align: center;">Cadastro de Veículo</h2>
+
+  <app-vehicle-form
+    [vehicle]="newVehicle"
+    (save)="saveVehicle($event)"
+    (cancel)="cancelForm()"
+  ></app-vehicle-form>
+</div>

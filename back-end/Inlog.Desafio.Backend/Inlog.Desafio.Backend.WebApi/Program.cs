@@ -1,20 +1,38 @@
+using System.Reflection;
+using Inlog.Desafio.Backend.Application;
+using Inlog.Desafio.Backend.Infra.Database;
+using Inlog.Desafio.Backend.WebApi;
+using Inlog.Desafio.Backend.WebApi.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services
+    .AddApplication()
+    .AddPresentation()
+    .AddInfrastructure(builder.Configuration);
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddCorsServices(builder.Configuration);
+
+builder.Services.AddEndpoints(Assembly.GetExecutingAssembly());
+
+builder.Services.AddHttpClient();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+app.UseCors("AllowMyFrontend");
+
+app.MapEndpoints();
+
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerWithUi();
+
+    app.ApplyMigrations();
 }
+
+app.UseRequestContextLogging();
+
+app.MapHubs();
 
 app.UseHttpsRedirection();
 
@@ -22,4 +40,9 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+await app.RunAsync();
+
+namespace Inlog.Desafio.Backend.WebApi
+{
+    public class Program { }
+}

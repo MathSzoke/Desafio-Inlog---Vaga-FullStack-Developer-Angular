@@ -1,0 +1,112 @@
+<form (submit)="onSubmit($event)" class="vehicle-form" style="display: flex; flex-direction: column; gap: 1rem;">
+  <div style="display: flex; align-items: center;">
+    <fluent-text-field
+      style="flex: 1"
+      [value]="vehicle.identifier"
+      (input)="vehicle.identifier = $any($event.target).value"
+      placeholder="Veiculo 1"
+      required
+    >
+      Identificador
+    </fluent-text-field>
+    <fluent-button type="button" appearance="stealth" style="margin-left: 0.5rem;" (click)="generateIdentifier()">⟳</fluent-button>
+  </div>
+
+  <div style="display: flex; align-items: center;">
+    <fluent-text-field
+      style="flex: 1"
+      [value]="vehicle.chassis"
+      (input)="vehicle.chassis = $any($event.target).value"
+      placeholder="1ABCD12345A123456"
+      required
+    >
+      Chassi
+    </fluent-text-field>
+    <fluent-button type="button" appearance="stealth" style="margin-left: 0.5rem;" (click)="generateChassis()">⟳</fluent-button>
+  </div>
+
+  <div style="display: flex; align-items: center;">
+    <fluent-text-field
+      style="flex: 1"
+      [value]="vehicle.licensePlate"
+      (input)="vehicle.licensePlate = $any($event.target).value"
+      placeholder="ABC-1234"
+      required
+    >
+      Placa do veículo
+    </fluent-text-field>
+    <fluent-button type="button" appearance="stealth" style="margin-left: 0.5rem;" (click)="generateLicensePlate()">⟳</fluent-button>
+  </div>
+
+  <div style="display: flex; align-items: center;">
+    <fluent-text-field
+      style="flex: 1"
+      [value]="vehicle.trackerSerialNumber"
+      (input)="vehicle.trackerSerialNumber = $any($event.target).value"
+      placeholder="ABC-123"
+      required
+    >
+      Número de série do rastreador
+    </fluent-text-field>
+    <fluent-button type="button" appearance="stealth" style="margin-left: 0.5rem;" (click)="generateTrackerSerialNumber()">⟳</fluent-button>
+  </div>
+
+  <div style="display: flex; align-items: center;">
+    <label style="flex: 1;">
+      <span style="display: block; margin-bottom: 4px;">Cor do veículo</span>
+      <input
+        type="color"
+        [value]="vehicle.color"
+        (input)="vehicle.color = $any($event.target).value"
+        style="width: 100%; height: 2.5rem; border-radius: 6px; border: 1px solid #ccc;"
+        required
+      />
+    </label>
+    <fluent-button type="button" appearance="stealth" style="margin-left: 0.5rem;" (click)="generateColor()">⟳</fluent-button>
+  </div>
+
+  <div style="display: flex; align-items: center;">
+    <fluent-select
+      style="flex: 1"
+      [attr.value]="vehicle.vehicleType?.toString()"
+      (change)="vehicle.vehicleType = +$any($event.target).value"
+    >
+      <fluent-option value="1">🚛 Caminhão</fluent-option>
+      <fluent-option value="2">🚌 Ônibus</fluent-option>
+    </fluent-select>
+    <fluent-button type="button" appearance="stealth" style="margin-left: 0.5rem;" (click)="generateVehicleType()">⟳</fluent-button>
+  </div>
+
+  <div style="display: flex; align-items: center;">
+    <fluent-text-field
+      style="flex: 1"
+      type="text"
+      [value]="vehicle.coordinates?.latitude"
+      (input)="onLatInput($event)"
+      placeholder="90 a -90"
+      required
+    >
+      Latitude
+    </fluent-text-field>
+    <fluent-button type="button" appearance="stealth" style="margin-left: 0.5rem;" (click)="generateLatitude()">⟳</fluent-button>
+  </div>
+
+  <div style="display: flex; align-items: center;">
+    <fluent-text-field
+      style="flex: 1"
+      type="text"
+      [value]="vehicle.coordinates?.longitude"
+      (input)="onLonInput($event)"
+      placeholder="180 a -180"
+      required
+    >
+      Longitude
+    </fluent-text-field>
+    <fluent-button type="button" appearance="stealth" style="margin-left: 0.5rem;" (click)="generateLongitude()">⟳</fluent-button>
+  </div>
+
+  <div style="display: flex; gap: 0.5rem;">
+    <fluent-button appearance="accent" type="submit">Cadastrar</fluent-button>
+    <fluent-button type="button" (click)="cancel.emit()">Cancelar</fluent-button>
+  </div>
+</form>

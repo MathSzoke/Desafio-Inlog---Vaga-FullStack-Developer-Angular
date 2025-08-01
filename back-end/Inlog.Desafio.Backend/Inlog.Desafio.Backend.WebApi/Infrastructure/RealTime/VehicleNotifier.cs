@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace Inlog.Desafio.Backend.WebApi.Infrastructure.RealTime;
 
-public sealed class SignalRVehicleNotifier(IHubContext<VehicleHub> hubContext) : IRealTimeVehicleNotifier
+public sealed class VehicleNotifier(IHubContext<VehicleHub> hubContext) : IRealTimeVehicleNotifier
 {
     public async Task NotifyVehicleRegisteredAsync(object vehicleData, CancellationToken cancellationToken)
     {

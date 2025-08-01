@@ -1,6 +1,1 @@
-namespace Inlog.Desafio.Backend.Test;
-
-public class GlobalUsings
-{
-    
-}
+global using Xunit;

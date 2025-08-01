@@ -1,36 +1,29 @@
 using Inlog.Desafio.Backend.Application.Abstractions.Data;
-using Inlog.Desafio.Backend.Domain.Models;
+using Inlog.Desafio.Backend.Domain.Vehicles;
 using Microsoft.EntityFrameworkCore;
 using SharedKernel;
 using SharedKernel.DomainEvents;
 
-namespace Inlog.Desafio.Backend.Infra.Database.Database;
+namespace Inlog.Desafio.Backend.Infra.Database.Database.Contexts;
 
-public class ApplicationDbContext : DbContext, IApplicationDbContext
+public class ApplicationDbContext(
+    DbContextOptions options,
+    ICurrentUserContext? currentUserContext,
+    IDomainEventsDispatcher? domainEventsDispatcher)
+    : DbContext(options), IApplicationDbContext
 {
-    private readonly ICurrentUserContext? _currentUserContext;
-    private readonly DomainEventsDispatcher? _domainEventsDispatcher;
-
-    public ApplicationDbContext(DbContextOptions options,
-        ICurrentUserContext? currentUserContext,
-        DomainEventsDispatcher? domainEventsDispatcher) : base(options)
-    {
-        _currentUserContext = currentUserContext;
-        _domainEventsDispatcher = domainEventsDispatcher;
-    }
-
-    public DbSet<Veiculo> Veiculos { get; set; }
+    public DbSet<Vehicle> Vehicles { get; set; }
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-
         modelBuilder.HasDefaultSchema(Schemas.Default);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
     }
     
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
-        var currentUserId = _currentUserContext?.UserId;
+        var currentUserId = currentUserContext?.UserId;
 
         foreach (var entry in ChangeTracker.Entries<Miscellaneous>())
             switch (entry.State)
@@ -70,8 +63,8 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
 
         var result = await base.SaveChangesAsync(cancellationToken);
 
-        if (_domainEventsDispatcher is not null && domainEvents.Count != 0)
-            await _domainEventsDispatcher.DispatchAsync(domainEvents, cancellationToken);
+        if (domainEventsDispatcher is not null && domainEvents.Count != 0)
+            await domainEventsDispatcher.DispatchAsync(domainEvents, cancellationToken);
 
         return result;
     }

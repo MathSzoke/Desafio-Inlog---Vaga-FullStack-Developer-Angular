@@ -1,0 +1,8 @@
+<div style="margin: 3em;">
+    <h2 style="text-align: center;">Atualização de Veículo</h2>
+    <app-vehicle-form
+    [vehicle]="data.vehicle"
+    (save)="onSave($event)"
+    (cancel)="onCancel()"
+    ></app-vehicle-form>
+</div>

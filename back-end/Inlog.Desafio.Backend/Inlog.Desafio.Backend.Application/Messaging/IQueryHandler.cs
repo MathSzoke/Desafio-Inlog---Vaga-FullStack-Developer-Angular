@@ -1,6 +1,8 @@
+using SharedKernel;
+
 namespace Inlog.Desafio.Backend.Application.Messaging;
 
-public class IQueryHandler
+public interface IQueryHandler<in TQuery, TResponse>
 {
-    
+    Task<Result<TResponse>> Handle(TQuery query, CancellationToken cancellationToken);
 }

@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+body { margin: 3em; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.danger-btn {
+  --accent-fill-rest: #e5484d !important;
+  --accent-foreground-rest: #fff !important;
+  background: #e5484d !important;
+  color: #fff !important;
+  border-color: #e5484d !important;
+}
+.danger-btn:hover {
+  --accent-fill-hover: #d43f3b !important;
+  --accent-foreground-hover: #fff !important;
+  background: #d43f3b !important;
+  color: #fff !important;
+  border-color: #d43f3b !important;
+}
+.danger-btn:active {
+  --accent-fill-pressed: #c33735 !important;
+  --accent-foreground-pressed: #fff !important;
+  background: #c33735 !important;
+  color: #fff !important;
+  border-color: #c33735 !important;
+}

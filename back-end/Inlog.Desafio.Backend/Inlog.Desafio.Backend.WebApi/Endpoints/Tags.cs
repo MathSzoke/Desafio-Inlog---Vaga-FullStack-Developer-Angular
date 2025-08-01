@@ -1,6 +1,6 @@
 namespace Inlog.Desafio.Backend.WebApi.Endpoints;
 
-public class Tags
+public static class Tags
 {
-    
+    public const string Vehicles = "Veiculos";
 }

@@ -1,0 +1,54 @@
+<div class="list-container">
+  <h2>Grupo Inlog</h2>
+
+  <fluent-button
+    appearance="accent"
+    style="float: right; margin: 0 3em 3em 0;"
+    (click)="openCreateModal()"
+  >
+    Registrar veículo
+  </fluent-button>
+
+  <fluent-data-grid
+    id="defaultGrid"
+    style="max-height: 30em; overflow-y: auto; width: 100%; border-radius: 8px;"
+    row-type="default"
+  >
+  </fluent-data-grid>
+
+  <div
+    class="map-wrapper"
+    [class.expanded]="mapExpanded"
+    (mouseenter)="hoveringMap = true"
+    (mouseleave)="hoveringMap = false"
+  >
+    <div class="backdrop" *ngIf="mapExpanded" (click)="toggleMap($event)"></div>
+    <div id="map" class="map-container"></div>
+
+    <fluent-button
+      *ngIf="!mapExpanded && hoveringMap"
+      appearance="stealth"
+      class="expand-btn"
+      aria-label="Expand map"
+      (click)="toggleMap()"
+    >
+      <span class="corner-bl"></span>
+      <span class="material-symbols-outlined">fullscreen</span>
+      <span class="corner-br"></span>
+    </fluent-button>
+  </div>
+
+  <div class="vehicle-form"
+    *ngIf="showForm && formX !== null && formY !== null"
+    [style.left.px]="formX"
+    [style.top.px]="formY"
+  >
+    <button class="form-close-btn" type="button" (click)="showForm = false">×</button>
+    <div class="form-arrow"></div>
+    <app-vehicle-form
+      [vehicle]="newVehicle"
+      (save)="saveVehicle()"
+      (cancel)="cancelForm()"
+    ></app-vehicle-form>
+  </div>
+</div>

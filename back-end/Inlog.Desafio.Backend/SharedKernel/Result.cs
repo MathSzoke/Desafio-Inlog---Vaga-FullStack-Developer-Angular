@@ -14,7 +14,7 @@ public class Result
         Error = error;
     }
 
-    protected bool IsSuccess { get; }
+    public bool IsSuccess { get; }
 
     public bool IsFailure => !IsSuccess;
 
@@ -25,7 +25,7 @@ public class Result
         return new Result(true, Error.None);
     }
 
-    protected static Result<TValue> Success<TValue>(TValue value)
+    public static Result<TValue> Success<TValue>(TValue value)
     {
         return new Result<TValue>(value, true, Error.None);
     }
@@ -35,7 +35,7 @@ public class Result
         return new Result(false, error);
     }
 
-    protected static Result<TValue> Failure<TValue>(Error error)
+    public static Result<TValue> Failure<TValue>(Error error)
     {
         return new Result<TValue>(default, false, error);
     }

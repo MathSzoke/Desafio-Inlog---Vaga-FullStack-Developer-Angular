@@ -1,22 +1,29 @@
 using Inlog.Desafio.Backend.Application.Messaging;
+using Inlog.Desafio.Backend.Application.Services.Vehicles.Register;
+using Inlog.Desafio.Backend.Domain.Vehicles;
 using Inlog.Desafio.Backend.WebApi.Extensions;
+using Inlog.Desafio.Backend.WebApi.Infrastructure;
 
 namespace Inlog.Desafio.Backend.WebApi.Endpoints.Vehicles;
 
-internal sealed class Add : IEndpoint
+internal sealed class Register : IEndpoint
 {
-    // TODO: Cadastrar um veiculo em memoria ou banco de dados
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
-        app.MapGet("api/v1/Veiculos/Cadastrar", async (
+        app.MapPost("api/v1/Veiculos/Cadastrar", async (
                 Request request,
-                ICommandHandler<RegisterVehicleCommand, RegisterResponse> handler,
+                ICommandHandler<RegisterVehicleCommand, Vehicle> handler,
                 CancellationToken cancellationToken) =>
             {
                 var command = new RegisterVehicleCommand(
-                    request.Email,
-                    request.Name,
-                    request.Password);
+                    request.Identifier,
+                    request.Chassis,
+                    request.LicensePlate,
+                    request.TrackerSerialNumber,
+                    request.VehicleType,
+                    request.Color,
+                    request.Coordinates
+                );
 
                 var result = await handler.Handle(command, cancellationToken);
 
@@ -24,5 +31,14 @@ internal sealed class Add : IEndpoint
             })
             .WithTags(Tags.Vehicles);
     }
-    private sealed record Request(string Email, string Name, string Password);
+
+    private sealed record Request(
+        string Identifier,
+        string Chassis,
+        string LicensePlate,
+        string TrackerSerialNumber,
+        VehicleType VehicleType,
+        string Color,
+        Coordinates Coordinates
+    );
 }

@@ -1,0 +1,197 @@
+/* Seu CSS existente */
+#map {
+  width: 100%;
+}
+
+.list-container {
+  margin: 20px;
+}
+
+.map-wrapper {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  width: 300px;
+  height: 200px;
+  z-index: 1000;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.map-wrapper.expanded {
+  top: 10%;
+  left: 10%;
+  width: 80vw;
+  height: 80vh;
+  z-index: 1500;
+}
+
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  cursor: default;
+}
+
+.expand-btn {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2000;
+  border: none;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  --border-color: white;
+}
+
+.expand-btn::part(control) {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+}
+
+.expand-btn::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 16px;
+  height: 16px;
+  border-top: 2px solid var(--border-color);
+  border-left: 2px solid var(--border-color);
+  border-radius: 3px;
+}
+
+.expand-btn::after {
+  content: '';
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  width: 16px;
+  height: 16px;
+  border-top: 2px solid var(--border-color);
+  border-right: 2px solid var(--border-color);
+  border-radius: 3px;
+}
+
+.expand-btn .corner-bl {
+  content: '';
+  position: absolute;
+  bottom: 10%;
+  left: 10%;
+  width: 16px;
+  height: 16px;
+  border-bottom: 2px solid var(--border-color);
+  border-left: 2px solid var(--border-color);
+  border-radius: 3px;
+}
+
+.expand-btn .corner-br {
+  content: '';
+  position: absolute;
+  bottom: 10%;
+  right: 10%;
+  width: 16px;
+  height: 16px;
+  border-bottom: 2px solid var(--border-color);
+  border-right: 2px solid var(--border-color);
+  border-radius: 3px;
+}
+
+.expand-btn::after,
+.expand-btn::before,
+.expand-btn .corner-bl,
+.expand-btn .corner-br {
+  pointer-events: none;
+}
+
+.expand-btn:hover::part(control) {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.expand-btn .corner-bl,
+.expand-btn .corner-br {
+  display: block;
+}
+
+
+.material-symbols-outlined {
+  font-size: 4em;
+  color: white;
+}
+
+.vehicle-form {
+  position: absolute;
+  transform: translate(-4%, -80%);
+  z-index: 3000;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 0.75rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.form-arrow {
+  content: '';
+  position: absolute;
+  transform: translateY(-10%);
+  bottom: -10px;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid white;
+  z-index: 3001;
+}
+
+.form-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-close-btn {
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #999;
+  float: right;
+  cursor: pointer;
+}
+
+.form-close-btn:hover {
+  color: #333;
+}
+
+.vehicle-grid {
+  width: 100%;
+  margin-top: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.color-preview {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}

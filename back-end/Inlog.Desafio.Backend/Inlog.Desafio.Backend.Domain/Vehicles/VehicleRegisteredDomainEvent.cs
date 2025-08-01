@@ -1,6 +1,5 @@
+using SharedKernel;
+
 namespace Inlog.Desafio.Backend.Domain.Vehicles;
 
-public class VehicleRegisteredDomainEvent
-{
-    
-}
+public sealed record VehicleRegisteredDomainEvent(Vehicle Vehicle) : IDomainEvent;

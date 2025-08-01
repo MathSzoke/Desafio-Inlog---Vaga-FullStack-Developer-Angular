@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Http;
 using SharedKernel;
 
-namespace Inlog.Desafio.Backend.WebApi.Extensions;
+namespace Inlog.Desafio.Backend.WebApi.Infrastructure;
 
 public static class CustomResults
 {
