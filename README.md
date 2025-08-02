@@ -22,6 +22,8 @@ docker-compose up
 > choco install docker-desktop
 > ```
 
+### Após a compilação com sucesso via docker, você deve conseguir visualizar a tela a partir da URL [localhost](http://localhost:4200)
+
 # Desafio Inlog - Vaga FullStack Developer 🚀
 
 Objetivo Geral:
