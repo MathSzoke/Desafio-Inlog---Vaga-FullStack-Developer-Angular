@@ -1,59 +1,130 @@
-# InlogFrontend
+# Projeto Frontend - Documentação
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.4.
+## 📌 Visão Geral
 
-## Development server
+Este documento descreve as tecnologias, arquitetura, padrões utilizados, versões das dependências e instruções de como iniciar o projeto frontend fornecido. O projeto utiliza o FluentUI para tentar proporcionar um visual mais agradável e alinhado às ferramentas da Microsoft.
 
-To start a local development server, run:
+## 🚀 Tecnologias e Versões
 
-```bash
-ng serve
+### Plataforma
+- **Angular 20.1.4**
+- **TypeScript 5.8.2**
+
+### Bibliotecas Principais
+- **FluentUI Web Components** (2.6.1)
+- **Angular Material e CDK** (20.1.4)
+- **Leaflet** (1.9.4)
+- **ngx-toastr** (19.0.0)
+- **RxJS** (7.8.0)
+
+### Ferramentas Auxiliares
+- **Express** (5.1.0) para suporte ao SSR (Server-Side Rendering)
+
+## 🎨 Interface e Design
+
+- **FluentUI**: Utilizado para alinhar a interface com o padrão visual das ferramentas da Microsoft, buscando maior clareza, elegância e profissionalismo na interface.
+
+## 📚 Estrutura e Organização
+
+O projeto segue o padrão recomendado pelo Angular, com componentes standalone e organização clara por feature:
+
+```
+src/
+├── app/
+│   ├── vehicles/
+│   │   ├── vehicle-list/
+│   │   ├── vehicle-create/
+│   │   ├── vehicle-update/
+│   │   └── vehicle-form/
+│   ├── app.routes.ts
+│   └── app.component.ts
+├── custom-theme.scss
+└── main.ts
+└── styles.css
+└── index.html
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 🔄 Padrões e Arquitetura
 
-## Code scaffolding
+- **Componentização**: Uso extensivo de componentes standalone, promovendo modularidade e reuso.
+- **Service Layer**: Centralização das requisições HTTP utilizando Angular Services.
+- **Routing**: Implementado com Angular Router para navegação simplificada entre as views.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## ⚙️ Como Executar o Projeto
 
-```bash
-ng generate component component-name
-```
+### Pré-requisitos
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- [Node.js](https://nodejs.org) (recomendado v20 ou superior)
+- [Angular CLI](https://angular.io/cli)
 
-```bash
-ng generate --help
-```
+### Passos para execução
 
-## Building
-
-To build the project run:
+1. Clone o repositório e acesse a pasta do projeto:
 
 ```bash
-ng build
+git clone https://github.com/MathSzoke/Desafio-Inlog---Vaga-FullStack-Developer-Angular.git
+cd front-end/inlog-frontend
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+2. Instale as dependências do projeto:
 
 ```bash
-ng test
+npm install
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+3. Execute o servidor de desenvolvimento:
 
 ```bash
-ng e2e
+npm start
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Acesse a aplicação através da URL:
+```
+http://localhost:4200
+```
 
-## Additional Resources
+## 🚧 Build do Projeto
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Para realizar o build do projeto para produção:
+
+```bash
+npm run build
+```
+
+Os arquivos buildados estarão localizados em:
+```
+dist/inlog-frontend
+```
+
+## 🌍 SSR (Server-Side Rendering)
+
+Para utilizar SSR:
+
+```bash
+npm run build:ssr
+npm run serve:ssr:inlog-frontend
+```
+
+## 🧪 Execução dos Testes
+
+Para executar os testes:
+
+```bash
+npm run test
+```
+
+## 📖 Rotas da Aplicação
+
+- `/vehicles`: Lista todos os veículos cadastrados.
+- `/vehicles/create`: Formulário para cadastro de novos veículos.
+
+## 🌟 FluentUI
+
+Utilizado para implementar componentes visuais, como botões, inputs e dropdowns, proporcionando uma experiência mais agradável, similar aos aplicativos Microsoft.
+
+## 📝 Observações Finais
+
+Esta documentação permite rápida assimilação do projeto frontend, possibilitando que desenvolvedores possam executar, testar e expandir o projeto com facilidade, mantendo o padrão visual agradável proporcionado pelo FluentUI.
+
+*OBS: Infelizmente a utilização do FluentUI para esse projeto foi de fato um experimento, da qual não obtive grandes sucessos, pois depois de ter tentado utilizar muito da ferramenta do FluentUI,
+me dei conta de que o FluentUI possui mais suporte á React do que ao Angular... Mas podemos ter uma breve ideia de como é a UI da biblioteca FluentUI da Microsoft.*
