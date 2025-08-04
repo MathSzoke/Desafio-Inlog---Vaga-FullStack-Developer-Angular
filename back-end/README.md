@@ -126,4 +126,3 @@ Inlog.Desafio.Backend/
 ## Observações Finais
 
 Esta documentação fornece uma visão abrangente do projeto backend, permitindo que desenvolvedores entendam rapidamente a arquitetura, as tecnologias utilizadas e o processo necessário para execução e testes.
-
