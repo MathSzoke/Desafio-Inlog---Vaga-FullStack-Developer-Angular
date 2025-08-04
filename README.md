@@ -24,6 +24,8 @@ docker-compose up
 
 Após a compilação com sucesso via docker, você deve conseguir visualizar a tela a partir da URL [localhost](http://localhost:4200).
 
+**Caso queira, é possível visualizar a documentação tanto do frontend quanto do backend acessando as pastas em questão.**
+
 <hr/>
 
 # Desafio Inlog - Vaga FullStack Developer 🚀
