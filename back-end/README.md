@@ -13,7 +13,7 @@ O projeto utiliza as seguintes tecnologias principais:
 - **.NET 9.0**
 
 *OBS: Reparei na descrição do desafio de que era permitido realizar a atividade com .NET 6 ou superior,
-então escolhi seguir com uma tecnologia moderna e certamente eficiente para qualquer demanda dos dia de hoje. Uma das razões principais de ter escolhido o .NET 9 foi
+então escolhi seguir com uma tecnologia moderna e certamente eficiente para qualquer demanda dos dias de hoje. Uma das razões principais de ter escolhido o .NET 9 foi
 pelo simples fato de que diante de diversos testes de benchmark, essa versão da plataforma .NET foi considerada a melhor em performance e desempenho, o que nos dá segurança
 em escolhe-la.*
 
